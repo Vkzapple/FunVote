@@ -81,8 +81,37 @@ h1 .letter {
 
 h2 .letter {
   font-size: 1.8em;
+  animation: bounceIn 1s ease forwards;
 }
 
+@keyframes gradientAnim {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+  }
+  70% {
+    transform: scale(0.9) rotate(-5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
 .polling-container {
   background: white;
   border-radius: 15px;

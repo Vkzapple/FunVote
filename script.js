@@ -2,35 +2,35 @@ const kandidatOsis = [
   {
     id: "osis1",
     nama: "Abdul XI Sija & Rosyid X Tp II",
-    visi: "Sekolah Kreatif dan Inovatif",
-    foto: "https://via.placeholder.com/150",
+    visi: "MENJADIKAN ANGGOTA OSIS-MPK SMK NEGERI 1 JAKARTA SEBAGAI...",
+    foto: "./assets/paslon1.jpeg",
   },
   {
     id: "osis2",
     nama: "Araechpaet XI Rpl & Tasya X Dkv",
-    visi: "Prestasi dan Karakter Unggul",
-    foto: "https://via.placeholder.com/150",
+    visi: "MENGEMBANGKAN OSIS SMK NEGERI 1 JAKARTA SEBAGAI....",
+    foto: "./assets/paslon2.png",
   },
   {
     id: "osis3",
     nama: "Ikhsan XI Tkp II & Adam X Tkr I",
-    visi: "Peduli Lingkungan dan Sosial",
-    foto: "https://via.placeholder.com/150",
+    visi: "MEMBUAT OSIS SMK NEGERI 1 JAKARTA LEBIH DIKENAL...",
+    foto: "./assets/paslon3.jpeg",
   },
 ];
 
 const kandidatMpk = [
   {
     id: "mpk1",
-    nama: "Rakha XI Dpib",
-    visi: "Pengembangan Minat Bakat",
-    foto: "https://via.placeholder.com/150",
+    nama: "Rakha XI DPIB II",
+    visi: "Menjadikan MPK sebagai organisasi legislatif...",
+    foto: "./assets/mpk1.jpeg",
   },
   {
     id: "mpk2",
-    nama: "Kenichi XI TITL",
-    visi: "Kepemimpinan dan Keteladanan",
-    foto: "https://via.placeholder.com/150",
+    nama: "Kenichi XI TITL III",
+    visi: "Menjadi pemimpin yang dapat dipercaya...",
+    foto: "./assets/mpk2.jpeg",
   },
 ];
 
