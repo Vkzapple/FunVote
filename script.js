@@ -41,7 +41,7 @@ function renderKandidat(kandidat, tipe) {
   const container = document.getElementById(
     `kandidat${tipe.charAt(0).toUpperCase() + tipe.slice(1)}`
   );
-  container.innerHTML = ""; // Bersihkan kontainer sebelumnya
+  container.innerHTML = "";
 
   kandidat.forEach((k) => {
     const card = document.createElement("div");
