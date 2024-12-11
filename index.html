@@ -1,287 +1,35 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polling OSIS & MPK By epel</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quick Count by epel</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-        :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #ff6a88 0%, #ff6a88 100%);
-            --text-light: #ffffff;
-            --text-dark: #2d3748;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(160deg, #f4f4f4 0%, #e9e9e9 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .polling-container {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 900px;
-            padding: 40px;
-            transition: all 0.3s ease;
-        }
-
-        .section-title {
-            text-align: center;
-            color: #2d3748;
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--primary-gradient);
-        }
-
-        .kandidat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .kandidat-card {
-            background: white;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .kandidat-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            border-color: #667eea;
-        }
-
-        .kandidat-card img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--primary-gradient);
-            margin-bottom: 15px;
-        }
-
-        .vote-btn {
-            background: var(--primary-gradient);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin-top: 15px;
-        }
-
-        .vote-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .vote-btn:disabled {
-            background: #cbd5e0;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .hasil-voting {
-            display: none;
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-top: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-
-        .progress-container {
-            margin-bottom: 20px;
-        }
-
-        .progress-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 15px;
-            background: #e2e8f0;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            background: var(--primary-gradient);
-            width: 0;
-            transition: width 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-        }
-
-        @media (max-width: 768px) {
-            .polling-container {
-                padding: 20px;
-            }
-        }
-    </style>
-</head>
-<body>
+  <body>
     <div class="polling-container">
-        <div id="tahapOsis">
-            <h1 class="section-title">Polling OSIS</h1>
-            <div id="kandidatOsis" class="kandidat-grid"></div>
-        </div>
+      <div id="tahapOsis">
+        <h1 class="section-title">Polling OSIS</h1>
+        <div id="kandidatOsis" class="kandidat-grid"></div>
+      </div>
 
-        <div id="tahapMpk" style="display:none;">
-            <h1 class="section-title">Polling MPK</h1>
-            <div id="kandidatMpk" class="kandidat-grid"></div>
-        </div>
+      <div id="tahapMpk" style="display: none">
+        <h1 class="section-title">Polling MPK</h1>
+        <div id="kandidatMpk" class="kandidat-grid"></div>
+      </div>
 
-        <div id="hasilVoting" style="display:none;">
-            <h1 class="section-title">Hasil Voting</h1>
-            <div id="hasilOsis"></div>
-            <div id="hasilMpk"></div>
-        </div>
+      <div id="hasilVoting" style="display: none">
+        <h1 class="section-title">Hasil Voting</h1>
+        <div id="hasilOsis"></div>
+        <div id="hasilMpk"></div>
+      </div>
     </div>
 
-    <script>
-        const kandidatOsis = [
-            { id: 'osis1', nama: 'Abdul XI Sija & Rosyid X Tp II', visi: 'Sekolah Kreatif dan Inovatif', foto: 'https://via.placeholder.com/150' },
-            { id: 'osis2', nama: 'Araechpaet XI Rpl & Tasya X Dkv', visi: 'Prestasi dan Karakter Unggul', foto: 'https://via.placeholder.com/150' },
-            { id: 'osis3', nama: 'Ikhsan XI Tkp II & Adam X Tkr I', visi: 'Peduli Lingkungan dan Sosial', foto: 'https://via.placeholder.com/150' }
-        ];
-
-        const kandidatMpk = [
-            { id: 'mpk1', nama: 'Rakha XI Dpib', visi: 'Pengembangan Minat Bakat', foto: 'https://via.placeholder.com/150' },
-            { id: 'mpk2', nama: 'Fahrezi XI TP', visi: 'Kepemimpinan dan Keteladanan', foto: 'https://via.placeholder.com/150' }
-        ];
-
-        const votingState = { osis: {}, mpk: {} };
-        let tahapSaatIni = 'osis';
-
-        function renderKandidat(kandidat, tipe) {
-            const container = document.getElementById(`kandidat${tipe.charAt(0).toUpperCase() + tipe.slice(1)}`);
-            container.innerHTML = ''; // Bersihkan kontainer sebelumnya
-
-            kandidat.forEach(k => {
-                const card = document.createElement('div');
-                card.className = 'kandidat-card';
-                card.innerHTML = `
-                    <img src="${k.foto}" alt="${k.nama}">
-                    <h3>${k.nama}</h3>
-                    <p>${k.visi}</p>
-                    <button 
-                        onclick="vote('${tipe}', '${k.id}')" 
-                        class="vote-btn" 
-                        id="btn-${k.id}">Pilih
-                    </button>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function vote(tipe, kandidatId) {
-            if (Object.keys(votingState[tipe]).length > 0) {
-                alert('Anda sudah memberikan suara!');
-                return;
-            }
-
-            votingState[tipe][kandidatId] = 1;
-
-            // Nonaktifkan semua tombol voting
-            document.querySelectorAll(`#kandidat${tipe.charAt(0).toUpperCase() + tipe.slice(1)} .vote-btn`).forEach(btn => {
-                btn.disabled = true;
-            });
-
-            // Logika perpindahan tahap
-            if (tipe === 'osis') {
-                document.getElementById('tahapOsis').style.display = 'none';
-                document.getElementById('tahapMpk').style.display = 'block';
-                tahapSaatIni = 'mpk';
-            } else {
-                document.getElementById('tahapMpk').style.display = 'none';
-                document.getElementById('hasilVoting').style.display = 'block';
-                tampilkanHasil();
-            }
-        }
-
-        function tampilkanHasil() {
-            const hasilOsis = document.getElementById('hasilOsis');
-            const hasilMpk = document.getElementById('hasilMpk');
-            hasilOsis.innerHTML = '<h2>Hasil Voting OSIS</h2>';
-            hasilMpk.innerHTML = '<h2>Hasil Voting MPK</h2>';
-
-            ['osis', 'mpk'].forEach(tipe => {
-                const kandidatList = tipe === 'osis' ? kandidatOsis : kandidatMpk;
-                const hasilContainer = tipe === 'osis' ? hasilOsis : hasilMpk;
-                const totalSuara = Object.values(votingState[tipe]).reduce((a, b) => a + b, 0);
-
-                kandidatList.forEach(k => {
-                    const suara = votingState[tipe][k.id] || 0;
-                    const persentase = totalSuara > 0 ? (suara / totalSuara * 100).toFixed(1) : 0;
-
-                    const progressHTML = `
-                        <div class="progress-container">
-                            <div class="progress-info">
-                                <strong>${k.nama}</strong>
-                                <span>${suara} suara (${persentase}%)</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div 
-                                    class="progress-bar-fill" 
-                                    style="width:0%" 
-                                    data-percentage="${persentase}"
-                                ></div>
-                            </div>
-                        </div>
-                    `;
-
-                    hasilContainer.innerHTML += progressHTML;
-                });
-            });
-
-            // Animasi progress bar
-            setTimeout(() => {
-                const progressBars = document.querySelectorAll('.progress-bar-fill');
-                progressBars.forEach(bar => {
-                    const percentage = bar.getAttribute('data-percentage');
-                    bar.style.width = `${percentage}%`;
-                });
-            }, 100);
-        }
-
-        // Inisialisasi
-        renderKandidat(kandidatOsis, 'osis');
-        renderKandidat(kandidatMpk, 'mpk');
-    </script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
